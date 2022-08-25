@@ -1,0 +1,30 @@
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+    <p v-once>{{ titulo }}</p>
+    <p>{{ saudacao() }}</p>
+    <!-- Não use chaves duplas em diretivas -->
+    <a v-bind:href="link" target="_blank">Site do Jorge Loureiro</a>
+    <p v-html="link2"></p>
+    
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            titulo: 'VueJS - Usando v-once e v-html.',
+            link: 'https://jorgeloureiro.tk',
+            link2: '<a href="http://google.com" target="_blank">Google</a>'
+        },
+        methods:{
+            saudacao: function(){
+                // Titulo atualizado. Para evitar dupla redenrização use v-once
+                this.titulo="Sou o titulo atualizado!"
+                return this.titulo
+            }
+        }
+
+    })
+</script>

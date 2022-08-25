@@ -1,0 +1,26 @@
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+    <p>{{ titulo }}</p>
+    <p>{{ saudacao() }}</p>
+    <!-- Não use chaves duplas em diretivas -->
+    <a v-bind:href="link" target="_blank">Site do Jorge Loureiro</a>
+    
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            titulo: 'VueJS - Binding de propriedades',
+            link: 'https://jorgeloureiro.tk'
+        },
+        methods:{
+            saudacao: function(){
+                return "Hello, World!!"
+            }
+        }
+
+    })
+</script>
