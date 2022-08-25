@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,13 +9,16 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 </head>
+
 <body>
     <div id="app">
         <h1>{{ titulo }}</h1>
         <h3 v-once>Valor inicial: {{ contador }}</h3>
-        <h3 style="color: red">Valor atual:  {{ contador }}</h3>
-        
-        <button v-on:click="somar1">Somar 1</button>
+        <h3 style="color: red">Valor atual: {{ contador }}</h3>
+        <br>
+        <h2 v-on:mousemove="atualizarXY">Mouse: {{ x }} e {{y}}</h2>
+
+        <button v-on:click="somar(5)">Somar</button>
     </div>
 
     <script>
@@ -22,17 +26,24 @@
             el: "#app",
             data: {
                 titulo: 'Tratamento de Eventos',
-                contador: 0
+                contador: 0,
+                x: 0,
+                y: 0
             },
-            methods:{
-                somar1: function(){
+            methods: {
+                somar: function (passo) {
                     console.log(event)
-                    this.contador++
+                    this.contador+= passo
+                },
+                atualizarXY: function(event){
+                    this.x = event.clientX
+                    this.y = event.clientY
                 }
             }
 
         })
     </script>
-    
+
 </body>
+
 </html>
