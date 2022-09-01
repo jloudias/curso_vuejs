@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propriedade computed</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <h1>{{ titulo }}</h1>
+        <p>A propriedade <b>computed</b> evita que funções sejam chamadas desnecessariamente.</p>
+        <button v-on:click="aumentar">Aumentar</button>
+        <button v-on:click="diminuir">Diminuir</button>
+        <button v-on:click="aumentar2">Aumentar2</button>
+        <p>{{ contador }} | {{ contador2 }}</p>
+        <input type="text" v-bind:value="resultado">
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                titulo: 'Atualização em dupla via.',
+                contador: 0,
+                contador2: 0
+            },
+            computed: {
+                resultado(){
+                    console.log("resultado actionated")
+                    return this.contador>=5?"Maior ou igual a cinco":"Menor que 5"
+                }
+
+            },
+            methods: {
+                aumentar(){
+                    this.contador++
+                },
+                diminuir(){
+                    this.contador--
+                },
+                aumentar2(){
+                    this.contador2++
+                }
+            }
+
+        })
+    </script>
+    
+</body>
+</html>
